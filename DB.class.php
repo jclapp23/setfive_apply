@@ -84,14 +84,10 @@ class DB {
             $pairs .= "$key=:$key,";
         }
         $pairs = rtrim($pairs, ',');
-
-        var_dump($pairs);
         
         foreach ($whereArray as $key => $value) {
             $column = $key;
         }
-
-        var_dump($column);
 
         $stmt = $this->pdo->prepare("UPDATE $table SET $pairs WHERE $column = :value");
         
@@ -100,7 +96,6 @@ class DB {
         }
        
         foreach ($dataArray as $key => $value) {
-        	var_dump($value);
             $stmt->bindValue(":$key", $value);
         }
 
