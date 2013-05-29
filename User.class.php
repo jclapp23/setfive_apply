@@ -29,11 +29,8 @@ class User {
 	public function save(){		
     	if (isset($this->props["id"]))
     	{
-    		echo "update";
     		$user = $this->db->updateRow('user', $this->props , array("id" => $this->props["id"]) );
-    		var_dump($user);
     	}else{
-    		echo "insert";
     		$user = $this->db->insertRow('user', $this->props);
     	}
 		return $this;
@@ -111,7 +108,6 @@ class User {
   public function getId(){
     $row = $this->db->findById('user',$this->props['id']);
     echo $this->props['id'];
-    var_dump($row);
     return $row->id;
   }
   
